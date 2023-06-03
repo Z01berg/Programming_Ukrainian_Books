@@ -61,6 +61,7 @@
   		</div>
 
 </details>
+</details>
 
 <details>
   <summary><h1>Haskell</h1></summary>
@@ -79,4 +80,25 @@
     <a href="https://haskell.trygub.com/">Source</a>
   </div>
        
+</details>
+</details>
+
+<details>
+  <summary><h1>Lisp</h1></summary>
+
+  <details>
+    <summary>
+    <h3>Мова функціонального програмування Лiсп</h3>
+      </summary>
+    
+  <div>
+    <img src="./books/Lisp/1.png" alt="Fotografia książki">
+  </div>
+
+  <div align="right">
+    <a href="./books/Lisp">PDF</a>
+    <a href="http://www.unicyb.kiev.ua/Library/Lisp/LISP.HTM">Source</a>
+  </div>
+       
+</details>
 </details>

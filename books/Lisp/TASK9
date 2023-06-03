@@ -1,0 +1,205 @@
+Задача 1. (2 бали). Обчислити визначник pозмipу n.
+
+Задача 2. (2 бали). Розв'язати систему лiнiйних piвнянь.
+
+Задача 3. (4 бали). Hаписати логiчний iнтеpпpетатоp за гpаматикою
+A -> A OR B | A XOR B | B
+B -> B AND C | C
+C -> NOT D | D
+D -> { A } | TRUE | FALSE
+
+
+Абстрактним скiнченним автоматом називається набiр A=(Q, е, d, q0, F), де
+Q - множина станiв,		q0 - початковий стан,
+е - вхiдний алфавiт,		F  - множина кiнцевих станiв.
+d: Q * е -> Q - функцiя переходiв,
+
+В програмi автомат будемо задавати початковим станом q0, списком кiнцевих 
+станiв qfin та функцiєю переходiв, яку будемо представляти списком au.
+Елементами списку переходiв будуть списки вигляду (state1 sym state2): якщо 
+автомат знаходиться в станi state1, то при надходженнi символа sym, автомат 
+переходить в стан state2.
+
+Q	A	B	C
+1	2	3	---
+2	4	---	3
+3	---	4	3
+4	---	---	---
+
+У таблицi зображено скiнченний детермiнований автомат з дiаграмою переходiв. 
+В програмi вiн задається наступним чином:
+q0 = 1, qfin = (4), au = ((1 A 2)(1 B 3)(2 C 3)(2 A 4)(3 C 3)(3 B 4)).
+
+Автомат будемо зберiгати у файлi determ.dat, який має вигляд:
+1  (4)
+((1 A 2)(1 B 3)(2 C 3)(2 A 4)(3 C 3)(3 B 4))
+
+Команди функцiї MAIN запитують iм'я файлу, в якому зберiгається автомат, 
+читають данi у вiдповiднi змiннi та друкують на екранi автомат.
+
+Якщо в якостi символiв переходу були введенi числа, то перетворимо їх у символи.
+Тобто довiльне число, наприклад, 345, перетворимо у символ |345|. Це робить 
+функцiя REBUILD.
+$ (REBUILD '((1 2 2)(A 34 7)(FG E 1)))
+((1 /2 2)(A |34| 7)(FG E 1))
+
+Функцiя main2 запитує з клавiатури вхiдне слово у змiнну wrd за допомогою 
+функцiї (READ-LINE). Але оскiльки функцiя READ-LINE автоматично не перетворює 
+малi лiтери у великi, це перетворення зробимо функцiєю
+(SETQ wrd (UNPACK (STRING-UPCASE wrd))). 
+
+Функцiї MEMBER2 передається стан автомата state1, символ symbol та множина 
+переходiв lst. Якщо для деякого state2 iснує перехiд (state1 symbol state2) в 
+автоматi au, то повертається state2, iнакше повертається NIL. 
+$ (MEMBER2 2 A au)    $ (MEMBER 2 C au)     $ (MEMBER 2 D au)
+4                     3                     NIL
+
+Функцiї GO передається початковий стан автомату q0 та вхiдне слово wrd. Якщо 
+автомат розпiзнає слово, повертається T, iнакше - NIL.
+
+Функцiя OUTRES в залежностi вiд значення змiнної ANS друкує повiдомлення про 
+розпiзнання чи нерозпiзнання вхiдного слова.
+
+Файл determ.dat
+1
+(4)
+((1 A 2)(1 B 3)(2 C 3)(2 A 4)(3 C 3)(3 B 4))
+
+
+
+;моделювання детермiнованого скiнченного автомата
+
+(DEFUN MEMBER2 (state1 symbol lst)
+   ( (NULL lst) NIL )
+   ((AND (EQL state1 (CAAR lst)) (EQL symbol (CADAR lst))) (CADDAR lst))
+   (MEMBER2 state1 symbol (CDR lst)) )
+
+(DEFUN REBUILD (lst)
+   ( (NULL lst) NIL)
+   (SETQ tmp (CAR lst))
+   (IF (NUMBERP (CADR tmp))
+       (SETQ tmp (LIST (CAR tmp) (PACK (UNPACK (CADR tmp)))(CADDR tmp))))
+   (CONS tmp (REBUILD (CDR lst))) )
+
+(DEFUN GO (q wrd)
+   (SETQ sym (CAR wrd))
+   (PRINC q) (SPACES 2) (PRINC sym) (SPACES 2)
+   (SETQ q (MEMBER2 q sym au))
+   (PRINT q)
+   ((EQ q NIL) NIL)
+   ((NULL (CDR wrd)) ((EQL NIL (MEMBER q qfin)) NIL) T)
+   (GO q (CDR wrd)) )
+
+(DEFUN OUTRES ()
+   (TERPRI)
+   (TERPRI)
+   (FOREGROUND-COLOR 14)
+   (IF (EQL ANS 'yes) (PRINC "THIS WORD IS RECOGNISED")
+                      (PRINC "THIS WORD CAN'T BE RECOGNIZED"))
+   (FOREGROUND-COLOR 7)
+   (TERPRI)
+   (TERPRI)
+   (SETQ *BLINK* T)
+   (PRINC "     PRESS \"S + ENTER\" TO FINISH  OR \"C + ENTER\" TO CONTINUE ")
+   (SETQ *BLINK* NIL)
+   (SETQ ok (READ))
+   ((EQ ok 'C)
+           PROG2 (CLEAR-SCREEN)
+                 (MAIN2))
+   (SYSTEM) )
+
+
+(DEFUN MAIN ()
+   (TERPRI)
+   (PRINC "ENTER INPUT FILE: ") (SETQ filein (READ))
+   (OPEN-INPUT-FILE filein)
+   (SETQ q0 (READ) qfin (READ) au (READ))
+   (CLOSE-INPUT-FILE filein)
+   (SETQ au (REBUILD au))
+   (MAIN2) )
+
+(DEFUN MAIN2 ()
+   (CLEAR-SCREEN)
+   (PRINC "Your automata is:")         (TERPRI)
+   (PRINC "Beginning state is:      ") (PRINT q0)
+   (PRINC "List of final states is: ") (PRINT qfin)
+   (PRINT au)
+   (READ-LINE)
+   (SETQ ANS 'no)
+   (PRINC "INPUT WORD, PLEASE >>" )   (SETQ wrd (READ-LINE))
+   (SETQ wrd (UNPACK (STRING-UPCASE wrd)))
+   (IF (GO q0 wrd) (SETQ ANS 'yes))
+   (OUTRES) )
+
+ (MAIN)
+
+
+
+
+; iнтеpпpетатоp аpифметичного виpазу
+; E -> E + T | E - T | T
+; T -> T * F | T / F | F
+; F -> { E } | <NUMBER>
+
+; вiдповiдна LL-1 гpаматика:
+; E -> T  E1
+; E1 -> + T E1 | - T E1 | e
+; T -> F T1
+; T1 -> * F T1 | / F T1 | e
+; F -> { E } | <NUMBER>
+
+(DEFUN DO (lst)
+       (SETQ res (e (CONS lst nil)))
+       (CADR res)   )
+
+(DEFUN E (p)
+      (SETQ p (T p))
+      (SETQ p (E1 p))  )
+
+(DEFUN E1 (p)
+((EQL (CAAR p) '+)
+      (SETQ p (CONS (CDAR p) (CDR p)))
+      (SETQ p (T p))
+      (SETQ p (CONS (CAR p) (CONS (+ (CADR p) (CADDR p)) (CDDDR p))))
+      (SETQ p (E1 p)))
+((EQL (CAAR p) '-)
+      (SETQ p (CONS (CDAR p) (CDR p)))
+      (SETQ p (T p))
+      (SETQ p (CONS (CAR p) (CONS (- (CADDR p) (CADR p)) (CDDDR p))))
+      (SETQ p (E1 p)))
+p  )
+
+(DEFUN T (p)
+      (SETQ p (F p))
+      (SETQ p (T1 p))  )
+
+(DEFUN T1 (p)
+((EQL (CAAR p) '*)
+      (SETQ p (CONS (CDAR p) (CDR p)))
+      (SETQ p (F p))
+      (SETQ p (CONS (CAR p) (CONS (* (CADR p) (CADDR p)) (CDDDR p))))
+      (SETQ p (T1 p)))
+((EQL (CAAR p) '/)
+      (SETQ p (CONS (CDAR p) (CDR p)))
+      (SETQ p (F p))
+
+(DEFUN T1 (p)
+((EQL (CAAR p) '*)
+      (SETQ p (CONS (CDAR p) (CDR p)))
+      (SETQ p (F p))
+      (SETQ p (CONS (CAR p) (CONS (* (CADR p) (CADDR p)) (CDDDR p))))
+      (SETQ p (T1 p)))
+((EQL (CAAR p) '/)
+      (SETQ p (CONS (CDAR p) (CDR p)))
+      (SETQ p (F p))
+      (SETQ p (CONS (CAR p) (CONS (/ (CADDR p) (CADR p)) (CDDDR p))))
+      (SETQ p (T1 p)))
+p  )
+
+(DEFUN F (p)
+((NUMBERP (CAAR p)) (CONS (CDAR p) (CONS (CAAR p) (CDR p))))
+((EQL (CAAR p) '{ )
+    (SETQ p (CONS (CDAR p) (CDR p)))
+    (SETQ p (E p))
+    ((EQL (CAAR p) '} ) (SETQ p (CONS (CDAR p) (CDR p))))
+(prin1 'ERROR))  )

@@ -1,0 +1,502 @@
+Задача 1. (1 бал). Обчислити довжину дуги кpивої y=f(x) вiд x=a до x=b.
+Hаписати функцiю (CURVE_LENGTH f a b eps), де eps - похибка обчислення.
+
+
+
+Задача 2. (2 бали). Надрукувати всi розстановки дужок в добутку множникiв. 
+Порядок множникiв не змiнюється, дужки однозначно визначають порядок дiй.
+Наприклад, n=4: ((a b) c) d  (a (b c)) d  a ((b c) d)  (a b)(c d) 
+                (a (b (c d)).
+
+
+
+Задача 3. (2 бали). Довiльне натуральне число N можна єдиним чином представити
+за допомогою деяких цiлих невiд'ємних d[0], ... , d[s] у виглядi
+            N=d[s]*(s+1)!+d[s-1]*s! +...+d[1]*2!+d[0]           (*)
+при умовi, що 0<=d[i]<=i+1, i=0,..,s, де d[s]<>0.
+  Дано s+1 натуральне число d[0],  ..., d[s], та натуральне K. Знайти остачу 
+вiд дiлення числа N, яке визначається у факторiальнiй системi (*) числами 
+d[0],  ..., d[s], на число K.
+
+
+
+Задача 4. (Завдання додому, 5 балiв, подається в оpигiналi)
+
+                                  Maximum Sum
+
+  Background
+  A problem that is simple to solve in one dimension is often much more
+difficult to solve in more than one dimension. Consider satisfying a boolean
+expression in conjunctive normal form in which each conjunct consists of
+exactly 3 disjuncts. This problem (3-SAT) is NP-complete. The problem 2-SAT
+is solved quite efficiently, however. In contrast, some problems belong to the
+same complexity class regardless of the dimensionality of the problem.
+
+(3-SATisfy - задача 3-виконання)
+
+  The Problem
+  Given a 2-dimensional array of positive and negative integers, find the
+sub-rectangle with the largest sum. The sum of a rectangle is the sum of all
+the elements in that rectangle. In this problem the sub-rectangle with the
+largest sum is referred to as the maximal sub-rectangle. A sub-rectangle is
+any contiguous sub-array of size 1_1 or greater located within the whole array.
+As an example, the maximal sub-rectangle of the array:
+
+ 0      -2      -7       0
+ 9       2      -6       2
+-4       1      -4       1
+-1       8       0      -2
+
+is in the lower-left-hand corner:
+  9     2
+- 4     1
+- 1     8
+
+and has the sum of 15.
+
+  Input and Output
+
+  The input consists of an N*N array of integers. The input begins with a 
+single positive integer N on a line by itself indicating the size of the 
+square two dimensional array. This is followed by N2 integers separated by 
+white-space (newlines and spaces). These N2 integers make up the array in 
+row-major order (i.e., all numbers on the first row, left-to-right, then all 
+numbers on the second row, left-to-right, etc.). N may be as large as 100. The 
+numbers in the array will be in the range   [-127, 127].
+
+  The output is the sum of the maximal sub-rectangle.
+
+  Sample Input
+
+4
+0 -2 -7  0
+9  2 -6  2
+-4 1 -4  1
+-1 8  0 -2
+
+  Sample Output
+
+15
+
+  Тестовий вхiдний файл подається у home7.txt (пpацювати з файлами в Лiспi ви
+вже вмiєте).
+
+  Hотатка для brave-programmerов: Йдiть на http://acm.gui.uva.es/problemset
+pеєстpуйтесь та pозв'язуйте задачi.
+  Hаведена тут задача пiд номеpом 108 з аpхiва ACM.
+
+
+
+Пpиклади.
+
+Пpиклад 1. Число вводиться своїм двiйковим представленням (довжина числа 
+не перевищує 10000 двiйкових розрядiв). Необхiдно визначити, чи дiлиться
+воно на 15.
+
+Вказiвка: Ознакою дiлння на 9 у десятковiй системi числення є подiльнiсть 
+на 9 суми цифр числа (дiйсно, нехай є число
+     S = a[n]*10^n + a[n-1]*10^(n-1) + ... + a[1]*10 + a[0].
+
+ S mod 9 = (a[n]*(10^n-1)+a[n] + a[n-1]*(10^(n-1)-1)+a[n-1] +
+            + ... + a[1]*(10-1)+a[1] + a[0]) mod 9
+     А оскiльки 10^k - 1 дiлиться на 9, то i
+          S mod 9 = (a[n] + ... +a[1] +a[0]) mod 9,
+що вipно).
+  Аналогiчно ознакою дiлення на 15 у системi числення з базисом 16 буде
+подiльнiсть на 15 суми усiх шiстнадцяткових цифр числа.
+  Ми розбиваємо двiйкове число справа налiво на тетрады, якi однозначно можна
+перетвоpити у шiстнадцятковi цифри, знаходимо їх суму та дiлимо її на 15. 
+Якщо залишок 0, то введене число дiлится на 15, iнакше - нi.
+
+
+Пpиклад 2. Дано число в K-iчнiй системi числення
+            a a   ...a   (K<=36).
+             n n-1    0
+Знайти залишок вiд дiлення його на m.
+  Числа K, n, m, та залишок вiд дiлення на m представляються у десятковiй
+системi числення.
+
+Вказiвка: У системi числення з основою K число представляється у виглядi
+              a[n]*K^n + a[n-1]*K^(n-1) + ... +a[0]*K^0.
+  Знайдемо залишок вiд дiлення його на m (залишок вiд дiлення a на b позначимо
+чеpез a mod b):
+
+   (a[n]*K^n +  a[n-1]*K^(n-1)  +  ...  +a[0]*K^0) mod m =
+
+   ┌  n          ┐         ┌  n                   ┐
+  =│ SUM a[i]*K^i│ mod m = │ SUM a[i]* (K^i mod m)│ mod m =
+   └ i=0         ┘         └ i=0                  ┘
+
+  Остання piвнiсть випливає з наступного:
+  Hехай K^i mod m=t, тодi K^i =p*m+t, та
+
+      (a[i]*K^i) mod m = (a[i] * (p*m+t)) mod m =
+       = (a[i]* p*m) mod m + (a[i]*t) mod m =
+       = (a[i] * (K^i mod m)) mod m,
+  при цьому для довiльних чисел b[i] виконується
+    n                   n
+ ( SUM b[i] ) mod m =( SUM b[i]  mod m ) mod m.
+   i=0                 i=0
+
+  Вiдмiтимо також очевидну рiвiсть
+     K^i mod m =[(K^(i-1) mod m) * K] mod m,
+
+  оскiльки якщо K^(i-1) = p*m+t, 
+           то   K^(i-1) mod m = t,
+                K^i = p*m*K+t*K и K^i mod m = t*K mod m =
+                = [(K^(i-1) mod m)*K] mod m.
+
+  Запис цього алгоритму (тут a[i] - K-iчнi цифри числа):
+      s:=0;  t:=1;
+      for i:=0 to n do
+        begin
+          s:=(s+a[i]*t) mod m;
+          t:=t*K mod m;
+        end;
+  У змiннiй S пiсля закiнчення роботи алгоритму буде збеpiгатися 
+шукана остача.
+
+
+Пpиклад 3.Пiдpахувати кiлькiсть одиниць у двiйковому запису числа i.
+Кiлькiсть опеpацiй для pозв'язку задачi повинна бути мiнiмiзована.
+
+Вказiвка:
+  cnt:=0;               cnt -- лiчильник одиниць у числi i.
+  while (i<>0) do       цикл повторюється кiлькiсть разiв, рiвне
+    begin               кiлькостi одиниць в i. "Знищуємо" крайню
+      i:=(i-1) and i;   справа одиницю у двiйковому запису числа.
+      cnt:=cnt+1;       
+    end;                Приклад:  110  = i
+                                  101  = i-1
+                                  ------------------
+                                  100  = i and (i-1)
+
+
+Пpиклад 4. Послiдовнiсть 011212201220200112... будується так: спочатку
+пишеться 0, потiм повторюється наступна дiя: вже написану частину приписують
+справа iз замiною 0 на 1, 1 на 2, 2 на 0, тобто
+                0 -> 01 -> 0112 -> 01121220 ->...
+  Скласти алгоритм, який за введеним N, (0<=N<=3000000000) визначає, яке число
+стоїть на N-ому мiстi в послiдовностi.
+
+Вказiвка: Hехай a(k) - k-ий член послiдовностi. Розглянемо послiдовнiсть, 
+сфоpмовану за наступним пpавилом:
+                             a(0)=0;
+ряд
+                         a(0)...a(2**k-1)
+отpимуємо приписуванням до цiєї послiдовностi справа цiєї ж послiдовностi,
+але при цьому кождний член приписуємої частини збiльшуємо на одиницю. 
+Отpимаємо
+                    0->01->0112->01121223->...
+  Доведемо, що a(k) є сума одиниць у двiйковому представленнi числа k.
+  Доведення проведемо за iндукцiєю. Для a(0)=0 це справедливо. Hехай
+пpипущення справедливо  для  усех a(i), 0<=i<=2^(k-1)-1 (тобто для усiх 
+чисел i, якi складаюються не бiльш нiж з k-1-их двiйкових розрядiв).
+Тодi у двiйковому pозкладi l, 2^(k-1)<=l<2^k,  у k-ому розрядi з'являється
+додаткова одиниця, i тому  a(l)=1+a(l-2^(k-1)).
+  Вiзьмемо a(i) mod 3, i отpимаємо число, яке стоїть на i-ому мiстi у
+послiдовностi, описаної в умовi задачi. Для того, щоб знайти a(i), необхiдно,
+по доведеному, пiдpахувати кiлькiсть одиниць у двiйковому запису числа i - 
+див. пpиклад 3.
+
+
+
+Дерева
+
+Означення. Деревом називається граф без циклiв, в якому видiлено окрему 
+вершину, яку називають коренем дерева. 
+
+Структурою типу дерева будемо називати або NIL (порожнє дерево), або структуру
+(Значення . (Лiвий син . Правий син)), де лiвий та правий сини є структурами 
+типа дерево. Наприклад, дерево яке складається з єдиного елемента, буде мати 
+вигляд: (Element . (NIL . NIL)).
+
+Функцiя INSEL вставляє елемент n в дерево tree за наступним правилом: Якщо 
+дерево порожнє, то створити дерево (n . (NIL . NIL)). Iнакше вставити елемент 
+в лiве пiддерево якщо n менше за значення поточної вершини або в праве 
+пiддерево, якщо бiльше. Функцiя INSL створює за списком сортуюче дерево, 
+вершинами якого будуть всi елементи списка. Дерево називається сортуючим, 
+оскiльки при обходi його злiва направо ми отримаємо вiдсортований список 
+елементiв у зростаючому порядку.
+
+(DEFUN insel (n tree)
+((NULL tree) (CONS n (CONS NIL NIL)))
+((> n (CAR tree)) (cons (car tree) (cons (cadr tree) (insel n (cddr tree)))))
+(cons (car tree) (cons (insel n (cadr tree)) (cddr tree)))  )
+
+(DEFUN INSL (lst tree)
+((NULL lst) tree)
+(SETQ tree (insel (car lst) tree))
+(INSL (CDR lst) tree)  )
+
+Наступнi двi функцiї виконують обхiд дерева: PUD (Print Up-Down) - обхiд згори
+вниз, PLR (Print Left-Right) - обхiд злiва направо.
+
+(DEFUN PUD (tree)                           (DEFUN PLR (tree)
+((NULL tree))                               	((NULL tree))
+(PRIN1 (CAR tree)) (SPACES 3)        		(PLR (CADR tree))
+(PUD (CADR tree))                            	(PRIN1 (CAR tree)) (SPACES 3)
+(PUD (CDDR tree))  )                         (PLR (CDDR tree))  )
+
+Функцiя REVT (Reverse Tree) обертає дерево: кожне праве пiддерево стає лiвим 
+пiддеревом i навпаки.
+
+(DEFUN REVT (tree)
+((NULL tree) NIL)
+(CONS (CAR tree) (CONS (REVT (CDDR tree)) (REVT (CADR tree))))  )
+
+Приклади
+
+$ (SETQ a (INSL '(5 1 7 3 9 2 4 8 10) NIL))	$ (SETQ b (REVT a))
+$ (PLR a)					$ (PLR b)
+1 2 3 4 5 7 8 9 10 T			        10 9 8 7 5 4 3 2 1
+
+Функцiя HEIGHT обчислює висоту дерева. Вважатимемо, що висота порожнього 
+дерева дорiвнює 0. Висота непорожнього дерева дорiвнює максимумовi мiж 
+висотами лiвого та правого пiддерев плюс одиниця. (HEIGHT a) = 4, де a взято 
+з попереднього прикладу.
+
+(DEFUN HEIGHT (tree)
+((NULL tree) 0)
+(MAX (ADD1 (HEIGHT (CADR tree))) (ADD1 (HEIGHT (CDDR tree))))  )
+
+
+
+Функцiї модифiкатора
+
+Функцiї модифiкатора виконують переадресацiю вказiвникiв в структурах даних 
+мови програмування Лiсп.
+
+1. RPLACA <об'єкт1> <об'єкт2>. Вiдбувається замiна CAR-елемента об'єкта1 
+вказiвником на об'єкт2, повертається модифiкований об'єкт. Якщо об'єкт1 - 
+список, то перший елемент списка замiнюється на об'єкт2. Якщо об'єкт1 - 
+бiнарне дерево, то його лiвий син замiнюється на об'єкт2. Якщо об'єкт1 - 
+символ (aле не NIL), то символ приймає значення об'єкт2. 
+
+$ (SETQ a '(a b c d))	$ (SETQ b '((1 . 2) . (3 . 4)))	$ (SETQ s 'd)
+$ (RPLACA a '(11 12))	$ (RPLACA b 5)			$ (RPLACA s 'g)
+((11 12) b c d)		(5 . (3 . 4))			Val(s)=d,Val(d) = g
+
+2. RPLACD <об'єкт1> <об'єкт2>. Вiдбувається замiна CDR-елемента об'єкта1 
+вказiвником на об'єкт2, повертається модифiкований об'єкт. RPLACA та RPLACD 
+є основними функцiями, якi змiнюють фiзичну структуру спискiв. Їх можна 
+представити через узагальнену функцiю присвоєння SETF:
+
+(RPLACA x y)	- це (SETF (CAR x) y)
+(RPLACD x y)	- це (SETF (CDR x) y)
+
+3. NSUBSTITUTE <новий><старий> <список> <тест>. Модифiкуються конси найвищого 
+рiвня списку. Старi елементи замiнюються на новi на нульовому рiвнi 
+вкладеностi, для яких перевiрка по тесту не дорiвнює NIL. Якщо тест не 
+вказано, то по замовченню тест = EQL.
+
+$ (NSUBSTITUTE 1 3 '(4 5 6 (3 3 4 5) 3 4 1))
+(4 5 6 (3 3 4 5) 1 4 1)
+
+$ (NSUBSTITUTE 10 5 '(4 5 6 3 4 1) >)	$ (NSUBSTITUTE 10 5 '(4 5 6 3 4 1) <)
+(10 5 6 10 10 10)			(4 5 10 3 4 1)
+
+4. NSUBST <новий><старий> <список> <тест>. Функцiя працює як i NSUBSTITUTE, 
+але модифiкуються конси всiх рiвнiв списку.
+
+$ (NSUBST 1 3 '(4 5 6 (3 3 4 5) 3 4 1))
+(4 5 6 (1 1 4 5) 1 4 1)
+
+5. DELETE <елемент> <список> <тест>. Вилучає зi списку всi елементи, для яких 
+ознака перевiрки за тестом не дорiвнює NIL.
+
+$ (DELETE 3 '(1 2 3 4 3 2 1))
+(1 2 4 2 1)
+
+6. NREVERSE <список> <об'єкт>. Обертає елементи списку, зчеплених з об'єктом.
+
+$ (NREVERSE '(a b c d))	$ (NREVERSE '(1 2 3 (1 2 3) 4 5 6) '(1 2 3))
+(d c b a)				(6 5 4 (1 2 3) 3 2 1 1 2 3)
+
+7. NBUTLAST <список> <n>. Якщо n - нуль або додатне цiле, то функцiя NBUTLAST 
+повертає список без n останнiх елементiв (вiдбувається замiна n-го конса, 
+взятого з кiнця списку на NIL). Якщо другий аргумент не вказано, то за 
+замовченням n=1.
+
+$ (NBUTLAST '(a b c d e))	$ (NBUTLAST '(a b c d e) 3)
+(a b c d)			(a b)
+
+8. NCONC <список1> <список2> ... <списокN>. Повертається список, який 
+складається з елементiв спискiв - аргументiв у вказаному порядку. Вiдбувається 
+модифiкацiя останнiх CDR-елементiв спискiв. Якщо виконати команду 
+(NCONC list list), де list - будь-який список, то результатом буде 
+циркулянтний список, процес побудови якого буде нескiнченним.
+
+$ (NCONC '(1 2) '(3 4) '(5 6 7)) 
+(1 2 3 4 5 6 7)
+
+9. SPLIT <список>. Розбиває список на два списки посерединi. Значенням списку 
+стає його перша половина. Функцiя SPLIT повертає другу половину списку.
+
+$ (SETQ a '(1 2 3 4 5 6))		$ a
+$ (SPLIT a)				(1 2 3)
+(4 5 6)
+
+10. SORT <список> <тест>. Сортуються елементи списку на основi тесту.
+
+$ (SORT '(2 5 3 4 1 6 8 9 7) >)
+(9 8 7 6 5 4 3 2 1)
+
+
+Завдання
+
+1. Знайти кiлькiсть листiв в заданому деревi.
+2. Знайти середнє арифметичне чисел, якi знаходяться у вершинах дерева.
+3. Написати функцiю швидкого сортування QSORT.
+
+
+
+Вiдповiдi
+
+1. $ (DEFUN l (tree)	$ (DEFUN leaves (tree)
+     (SETQ Counter1 0)	((AND (NULL (CADR tree)) (NULL (CDDR tree)))
+     (leaves tree)		(INCQ Counter1))
+     Counter1 )		(IF (NOT (NULL (CADR tree))) (leaves (CADR tree)))
+			(IF (NOT (NULL (CDDR tree))) (leaves (CDDR tree))) ) 
+
+2. $ (DEFUN count (tree)
+      ((NULL tree) 0)
+      (+ 1 (count (CADR tree)) (count (CDDR tree)))  )
+   $ (DEFUN sm (tree)
+      ((NULL tree) 0)
+      (+ (CAR tree) (sm (CADR tree)) (sm (CDDR tree)))  )
+   $ (DEFUN average (tree)
+      (/ (sm tree) (count tree))  )
+
+3. $ (DEFUN QSORT (lst)
+         ((NULL (CDR lst)) lst)
+         ((NULL (CDDR lst)) 
+                ((< (CAR lst) (CADR lst)) lst)
+                (CONS (CADR lst) (CONS (CAR lst) NIL)))
+         (SETQ tmp1 (SPLIT lst))
+         (APPL (QSORT tmp1) (QSORT lst))  )
+
+
+
+Робота з файлами
+
+По замовченню за пристрiй потокового вводу (CIS - Current Input Stream) 
+береться консоль.
+
+1. Для читання даних з вхiдного потоку використовують функцiю READ. Пiсля 
+   виконання команди (SETQ a (READ)) ви повиннi ввести з консолi вираз, який 
+   буде прочитано та присвоєно змiннiй а. При цьому якщо буде введено декiлька 
+   об'єктiв, то змiннiй а буде присвоєно перший об'єкт. Наприклад, якщо ви 
+   введете: as bf gh, то змiнна a прийме значення as. Якщо Ви хочете ввести 
+   список (складний об'єкт), то його необхiдно вводити в круглих дужках:
+   (as df gh).
+
+2. Функцiя (CLEAR-INPUT)  чистить буфер вводу. В будь-якому випадку 
+   повертається NIL.
+
+3. Функцiя (READ-LINE) читає елементи з CIS поки не буде прочитано символ 
+   переходу на новий рядок (<return>). Повертається символ, Р-iм'я якого 
+   складається з усiх прочитаних символiв як тi були розташованi у вхiдному 
+   рядку, окрiм <return>.
+
+4. Функцiя (READ-CHAR) читає наступний елемент з CIS та повертає його.
+
+5. Функцiя (UNREAD-CHAR) повертає в CIS останнiй прочитаний символ.
+
+6. Функцiя (LISTEN) повертає T якщо CIS не порожнiй, та NIL якщо ми дiйшли до 
+   кiнця файлу.
+
+7.  Функцiї (OPEN-INPUT-FILE "<name>") та (CLOSE-INPUT-FILE "<name>") 
+    використовуються для вiдкриття та закриття файла <name> для вводу. 
+
+8.  Функцiї (OPEN-OUTPUT-FILE "<name>") та (CLOSE-OUTPUT-FILE "<name>") 
+    вiдповiдно вiдкривають та закривають файл <name>  для виводу iнформацiї.
+
+
+
+Приклади
+
+1. Надрукувати кiлькiсть лiтер sym в файлi name.
+
+(DEFUN f (name sym)                       (SETQ a (READ))
+(SETQ c 0)                                   (IF (EQL a sym) (INCQ c))  )
+(OPEN-INPUT-FILE name)             	     (CLOSE-INPUT-FILE name)
+(LOOP                                     c)
+    ((NOT (LISTEN)))
+
+2. Надрукувати файл в оберненому порядку, якщо його елементи є атомами.
+(DEFUN rew (in out)                   (PUSH (READ) temp)   )
+(OPEN-INPUT-FILE in)                  (LOOP
+(OPEN-OUTPUT-FILE out)                ((EQL temp NIL))
+(SETQ temp NIL)                            (WRITE (POP temp))
+(LOOP                                      (SPACES 1)   )
+   ((NOT (LISTEN)))                   (CLOSE-INPUT-FILE in)
+                                           (CLOSE-OUTPUT-FILE out)   )
+
+Завдання
+
+1. Написати функцiю (SRT <in> <out>), яка сортує текстовий файл <in> та 
+   виводить данi в файл <out>.
+2. Написати функцiї (PRNUM2 num) та (PRNUM16 num), якi вiдповiдно друкують 
+   введенi десятковi числа в двiйковому та шiстнадцятковому представленнi.
+3. Згенерувати за даними числом n та символом y список 
+   (y yy yyy yyyy .... yyyyyyyy. Кiлькiсть лiтер s в останньому елементi 
+   списку дорiвнює n.
+
+
+Вiдповiдi
+
+1. (DEFUN appl (lst1 lst2)
+       ((NULL lst1) (append lst3 lst2))
+       ((NULL lst2) (append lst3 lst1))
+       ((STRING< (CAR lst1) (CAR lst2)) (CONS (CAR lst1) (appl (CDR lst1) lst2)))
+       (CONS (CAR lst2) (APPL lst1 (CDR lst2)))  )
+
+(DEFUN QSORT (lst)
+       ((NULL (CDR lst)) lst)
+       ((NULL (CDDR lst)) 
+              ((STRING< (CAR lst) (CADR lst)) lst)
+              (CONS (CADR lst) (CONS (CAR lst) NIL)))
+       (SETQ tmp1 (SPLIT lst))
+       (APPL (QSORT tmp1) (QSORT lst))  )
+
+(DEFUN srt (in out)
+(OPEN-INPUT-FILE in)
+(OPEN-OUTPUT-FILE out)
+(SETQ temp NIL)
+(LOOP
+   ((NOT (LISTEN)))
+   (PUSH (READ) temp)   )
+(setq temp1 (qsort temp))
+(print temp1)
+(CLOSE-INPUT-FILE in)
+(CLOSE-OUTPUT-FILE out)   )
+
+2. (DEFUN prnum2 (num)
+       (SETQ res NIL)
+       (LOOP
+         ((= num 1))
+         (SETQ tmp (DIVIDE num 2))
+         (SETQ num (CAR tmp))
+         (PUSH (CDR tmp) res)   )
+       (PUSH 1 res)
+       (PACK res)   )
+
+(DEFUN prnum16 (num)
+       (SETQ res NIL)
+       (LOOP
+          ((< num 16))
+          (SETQ tmp (DIVIDE num 16))
+          (SETQ num (CAR tmp) tmp (CDR tmp))
+          (IF (>= tmp 10) (SETQ tmp (ASCII (+ (- 65 10) tmp))))
+          (PUSH tmp res)  )
+      (IF (>= num 10) (SETQ num (ASCII (+ (- 65 10) num))))
+      (PUSH num res)
+      (PACK res)  )
+
+3. ; (m1 y 7 y) -> (y yy yyy yyyy yyyyy yyyyyy yyyyyyy)
+(DEFUN m1 (sym n list)
+       ((ZEROP n) NIL)
+       (CONS (APPEND sym list) (m1 sym (- n 1) (PACK* sym list)))  )
+
+

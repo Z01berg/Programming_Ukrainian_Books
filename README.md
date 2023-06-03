@@ -59,8 +59,20 @@
     		 <a href="./books/Java/JAVA_programming_Gorban.pdf">PDF</a>
     		 <a href="https://ukrtechlibrary.wordpress.com/2012/02/24/%d0%b3%d0%be%d1%80%d0%b1%d0%b0%d0%bd%d1%8c-%d0%b0-%d0%b3-%d0%bf%d1%80%d0%be%d0%b3%d1%80%d0%b0%d0%bc%d1%83%d0%b2%d0%b0%d0%bd%d0%bd%d1%8f-%d0%b2-java-2008-pdf/">Source</a>
   		</div>
+</details>
+
+<details>
+	<summary><h3>Освоюємо_Java</h3></summary>
+		<div>
+    		 <img src="./books/Java/3.png" alt="Fotografia książki">
+  		</div>
+  		<div align="right">
+    		 <a href="./books/Java/Освоюємо_Java.pdf">PDF</a>
+    		 <a href="https://uk.wikibooks.org/wiki/%D0%9E%D1%81%D0%B2%D0%BE%D1%8E%D1%94%D0%BC%D0%BE_Java">Source</a>
+  		</div>
 
 </details>
+
 </details>
 
 <details>

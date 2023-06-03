@@ -18,6 +18,22 @@
   </div>
        
 </details>
+
+<details>
+    <summary>
+    <h3>Alhorytmizatsiia_ta_prohramuvannia_protsedur_obrobky_informatsii_S</h3>
+      </summary>
+    
+  <div>
+    <img src="./books/C/2.png" alt="Fotografia książki">
+  </div>
+
+  <div align="right">
+    <a href="./books/C/Alhorytmizatsiia_ta_prohramuvannia_protsedur_obrobky_informatsii_S.pdf">DJVU</a>
+    <a href="https://chtyvo.org.ua/authors/Schedrina_Olena/Alhorytmizatsiia_ta_prohramuvannia_protsedur_obrobky_informatsii_S/">Source</a>
+  </div>
+       
+</details>
 </details>
 
 

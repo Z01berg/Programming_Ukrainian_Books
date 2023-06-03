@@ -122,5 +122,20 @@
        
 </details>
 
+<details>
+    <summary>
+    <h3>Пориньте_у_Python_3</h3>
+      </summary>
+    
+  <div>
+    <img src="./books/Python/2.png" alt="Fotografia książki">
+  </div>
+
+  <div align="right">
+    <a href="./books/Python/Пориньте_у_Python_3.pdf">PDF</a>
+    <a href="https://uk.wikibooks.org/wiki/%D0%9F%D0%BE%D1%80%D0%B8%D0%BD%D1%8C%D1%82%D0%B5_%D1%83_Python_3">Source</a>
+  </div>
+       
+</details>
 
 </details>

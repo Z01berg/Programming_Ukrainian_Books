@@ -188,4 +188,20 @@
        
 </details>
 
+<details>
+    <summary>
+    <h3>Розплутаний ClojureScript</h3>
+      </summary>
+    
+  <div>
+    <img src="./books/JS/2.png" alt="Fotografia książki">
+  </div>
+
+  <div align="right">
+    <a href="./books/JS/ClojureScript">PDF</a>
+    <a href="https://lambdabooks.github.io/clojurescript-unraveled/#">Source</a>
+  </div>
+       
+</details>
+
 </details>

@@ -260,6 +260,27 @@
 
 </details>
 
+<details>
+  <summary><h1>WEB</h1></summary>
 
-<h1>Source:</h1>
+<details>
+    <summary>
+    <h3>Web-програмування та web-дизайнТехнологія XML</h3>
+      </summary>
+    
+  <div>
+    <img src="./books/WEB/1.png" alt="Fotografia książki">
+  </div>
+
+  <div align="right">
+    <a href="./books/WEB/Procenko111.doc">Source</a>
+    <a href="https://ukrtechlibrary.wordpress.com/2011/11/12/web-%d0%bf%d1%80%d0%be%d0%b3%d1%80%d0%b0%d0%bc%d1%83%d0%b2%d0%b0%d0%bd%d0%bd%d1%8f-%d1%82%d0%b0-web-%d0%b4%d0%b8%d0%b7%d0%b0%d0%b9%d0%bd-%d1%82%d0%b5%d1%85%d0%bd%d0%be%d0%bb%d0%be%d0%b3%d1%96%d1%8f-x/">Source</a>
+  </div>
+       
+</details>
+</details>
+
+
+<h1>Інші джерела де можна багато почитати:</h1>
 <a href="http://programming.in.ua/"  target="_blank"> <img src="http://programming.in.ua/images/stories/baner.gif" border="0" alt="Українські уроки про ІТ" title="Українські уроки про ІТ" /> </a>
+<a href="https://ukrtechlibrary.wordpress.com/category/%d0%bf%d1%80%d0%be%d0%b3%d1%80%d0%b0%d0%bc%d1%83%d0%b2%d0%b0%d0%bd%d0%bd%d1%8f/"  target="_blank"> <img src="https://commons.wikimedia.org/wiki/File:Digital_rain_banner.gif" border="0" alt="Українські уроки про ІТ" title="Українські уроки про ІТ" /> </a>

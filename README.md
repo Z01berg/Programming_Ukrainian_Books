@@ -2,9 +2,9 @@
 
 
 <details>
-<summary>Java</summary>
+<summary>C && Cpp</summary>
 
-<h1>C Cpp Теорія та практика</h1>
+<summary><h1>C Cpp Теорія та практика</h1></summary>
 
 <img src="./books/C/1.png" alt="Fotografia książki">
 

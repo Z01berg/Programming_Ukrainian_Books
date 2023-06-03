@@ -61,3 +61,22 @@
   		</div>
 
 </details>
+
+<details>
+  <summary><h1>Haskell</h1></summary>
+
+  <details>
+    <summary>
+    <h3>Вивчить собі Хаскела на велике щастя!</h3>
+      </summary>
+    
+  <div>
+    <img src="./books/Haskell/1.png" alt="Fotografia książki">
+  </div>
+
+  <div align="right">
+    <a href="./books/Haskell/luahfgg.pdf">PDF</a>
+    <a href="https://haskell.trygub.com/">Source</a>
+  </div>
+       
+</details>

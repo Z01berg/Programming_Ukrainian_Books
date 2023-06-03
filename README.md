@@ -102,3 +102,25 @@
        
 </details>
 </details>
+
+<details>
+  <summary><h1>Python</h1></summary>
+
+  <details>
+    <summary>
+    <h3>Підручник_мови_Python</h3>
+      </summary>
+    
+  <div>
+    <img src="./books/Python/1.png" alt="Fotografia książki">
+  </div>
+
+  <div align="right">
+    <a href="./books/Python/Підручник_мови_Python.pdf">PDF</a>
+    <a href="https://uk.wikibooks.org/wiki/%D0%9F%D1%96%D0%B4%D1%80%D1%83%D1%87%D0%BD%D0%B8%D0%BA_%D0%BC%D0%BE%D0%B2%D0%B8_Python">Source</a>
+  </div>
+       
+</details>
+
+
+</details>

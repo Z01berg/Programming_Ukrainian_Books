@@ -242,4 +242,20 @@
        
 </details>
 
+<details>
+    <summary>
+    <h3>Як пасти котів Дж. Генк Рейнвотер</h3>
+      </summary>
+    
+  <div>
+    <img src="./books/GB/3.png" alt="Fotografia książki">
+  </div>
+
+  <div align="right">
+    <a href="https://fabulabook.com/info-yak-pasty-kotiv-15130">Source</a>
+    <a href="https://www.google.com/search?client=firefox-b-d&q=%D0%AF%D0%BA+%D0%BF%D0%B0%D1%81%D1%82%D0%B8+%D0%BA%D0%BE%D1%82%D1%96%D0%B2+%D0%94%D0%B6.+%D0%93%D0%B5%D0%BD%D0%BA+%D0%A0%D0%B5%D0%B9%D0%BD%D0%B2%D0%BE%D1%82%D0%B5%D1%80">Mirror</a>
+  </div>
+       
+</details>
+
 </details>

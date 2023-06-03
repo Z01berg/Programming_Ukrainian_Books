@@ -205,3 +205,41 @@
 </details>
 
 </details>
+
+
+<details>
+  <summary><h1>Хороші офіційні книги</h1></summary>
+
+<details>
+    <summary>
+    <h3>Томас Г. Кормен. Алгоритми доступно.</h3>
+      </summary>
+    
+  <div>
+    <img src="./books/GB/1.png" alt="Fotografia książki">
+  </div>
+
+  <div align="right">
+    <a href="https://kis.prom.ua/p1532783546-tomas-kormen-algoritmi.html">Source</a>
+    <a href="https://www.google.com/search?client=firefox-b-d&q=%D0%A2%D0%BE%D0%BC%D0%B0%D1%81+%D0%93.+%D0%9A%D0%BE%D1%80%D0%BC%D0%B5%D0%BD.+%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D0%B8+%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D0%BE.">Mirror</a>
+  </div>
+       
+</details>
+
+<details>
+    <summary>
+    <h3>Томас Г.Кормен, Чарлз Е.Лейзерсон, Роналд Л.Рівест, Кліфорд Стайн. Вступ до алгоритмів</h3>
+      </summary>
+    
+  <div>
+    <img src="./books/GB/2.png" alt="Fotografia książki">
+  </div>
+
+  <div align="right">
+    <a href="https://kis.prom.ua/p1039323974-tomas-gkormen-charlz.html">Source</a>
+    <a href="https://www.google.com/search?client=firefox-b-d&q=%D0%A2%D0%BE%D0%BC%D0%B0%D1%81+%D0%93.%D0%9A%D0%BE%D1%80%D0%BC%D0%B5%D0%BD%2C+%D0%A7%D0%B0%D1%80%D0%BB%D0%B7+%D0%95.%D0%9B%D0%B5%D0%B9%D0%B7%D0%B5%D1%80%D1%81%D0%BE%D0%BD%2C+%D0%A0%D0%BE%D0%BD%D0%B0%D0%BB%D0%B4+%D0%9B.%D0%A0%D1%96%D0%B2%D0%B5%D1%81%D1%82%2C+%D0%9A%D0%BB%D1%96%D1%84%D0%BE%D1%80%D0%B4+%D0%A1%D1%82%D0%B0%D0%B9%D0%BD.+%D0%92%D1%81%D1%82%D1%83%D0%BF+%D0%B4%D0%BE+%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%96%D0%B2">Mirror</a>
+  </div>
+       
+</details>
+
+</details>

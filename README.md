@@ -168,3 +168,24 @@
 </details>
 
 </details>
+
+<details>
+  <summary><h1>JavaScrypt</h1></summary>
+
+  <details>
+    <summary>
+    <h3>Рoзуміння ECMAScript 6</h3>
+      </summary>
+    
+  <div>
+    <img src="./books/JS/1.png" alt="Fotografia książki">
+  </div>
+
+  <div align="right">
+    <a href="./books/JS/Рoзуміння ECMAScript 6">PDF</a>
+    <a href="https://understandinges6.denysdovhan.com/#">Source</a>
+  </div>
+       
+</details>
+
+</details>

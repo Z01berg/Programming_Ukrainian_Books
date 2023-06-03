@@ -284,4 +284,6 @@
 <h1>Інші джерела де можна багато почитати:</h1>
 <a href="http://programming.in.ua/"  target="_blank"> <img src="http://programming.in.ua/images/stories/baner.gif" border="0" alt="Українські уроки про ІТ" title="Українські уроки про ІТ" /> </a>
 
+[![Українські уроки про ІТ](https://upload.wikimedia.org/wikipedia/commons/4/4c/Digital_rain_banner.gif)](https://ukrtechlibrary.wordpress.com/category/%d0%bf%d1%80%d0%be%d0%b3%d1%80%d0%b0%d0%bc%d1%83%d0%b2%d0%b0%d0%bd%d0%bd%d1%8f/)
+
 <a href="https://ukrtechlibrary.wordpress.com/category/%d0%bf%d1%80%d0%be%d0%b3%d1%80%d0%b0%d0%bc%d1%83%d0%b2%d0%b0%d0%bd%d0%bd%d1%8f/"> <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Digital_rain_banner.gif" border="0" alt="f" title="ff" /> </a>

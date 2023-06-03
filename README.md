@@ -286,6 +286,7 @@
 
 <h1>Інші джерела де можна багато почитати:</h1>
 - <a href="http://programming.in.ua/"  target="_blank"> <img src="http://programming.in.ua/images/stories/baner.gif" border="0" alt="Українські уроки про ІТ" title="Українські уроки про ІТ" /> </a>
+
 - [addon (не все працює)](./addon)
 - [Книги ІТ українською](https://ukrtechlibrary.wordpress.com/category/%d0%bf%d1%80%d0%be%d0%b3%d1%80%d0%b0%d0%bc%d1%83%d0%b2%d0%b0%d0%bd%d0%bd%d1%8f/)
 - [DOU](https://dou.ua/forums/topic/19178/#comments)
